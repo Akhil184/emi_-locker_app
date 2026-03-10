@@ -5,7 +5,7 @@ class DevicePolicyService {
   static const MethodChannel _channel =
   MethodChannel("emi/device_policy");
 
-  Future<void> lockDevice() async {
+  static Future<void> lockDevice() async {
     try {
       await _channel.invokeMethod("lockDevice");
     } catch (e) {
@@ -13,11 +13,19 @@ class DevicePolicyService {
     }
   }
 
-  Future<void> unlockDevice() async {
+  static Future<void> blockUninstall() async {
     try {
-      await _channel.invokeMethod("unlockDevice");
+      await _channel.invokeMethod("blockUninstall");
     } catch (e) {
-      print("Unlock error: $e");
+      print("Uninstall block error: $e");
+    }
+  }
+
+  static Future<void> startKioskMode() async {
+    try {
+      await _channel.invokeMethod("startKioskMode");
+    } catch (e) {
+      print("Kiosk mode error: $e");
     }
   }
 }
