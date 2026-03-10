@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import '../../../../core/api/api_service.dart';
+import '../../../../services/socket_service.dart';
 import '../../data/repository/emi_repository_impl.dart';
 
 import '../bloc/emi_bloc.dart';
@@ -25,6 +26,8 @@ class _HomePageState extends State<HomePage> {
 
   late EmiBloc emiBloc;
 
+  final SocketService socketService = SocketService();
+
   @override
   void initState() {
     super.initState();
@@ -34,7 +37,25 @@ class _HomePageState extends State<HomePage> {
       DevicePolicyService(),
     );
 
-    fetchEmi();
+
+    socketService.connect("ws://192.168.1.34:1600");
+
+    socketService.listen((data) {
+
+      print("Socket message: $data");
+
+      if (data == "lock_device") {
+        emiBloc.add(LockDeviceEvent());
+      }
+
+      if (data == "unlock_device") {
+        emiBloc.add(UnlockDeviceEvent());
+      }
+
+    });
+
+
+      fetchEmi();
   }
 
   Future<void> fetchEmi() async {

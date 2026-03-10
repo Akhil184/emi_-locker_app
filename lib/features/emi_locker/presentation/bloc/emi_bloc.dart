@@ -42,5 +42,20 @@ class EmiBloc extends Bloc<EmiEvent, EmiState> {
 
       }
     });
+
+    on<LockDeviceEvent>((event, emit) async {
+
+      await DevicePolicyService.lockDevice();
+
+      emit(EmiLocked());
+
+    });
+
+    // 🔓 Socket unlock command
+    on<UnlockDeviceEvent>((event, emit) async {
+
+      emit(EmiInitial());
+
+    });
   }
 }

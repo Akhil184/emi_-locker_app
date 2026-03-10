@@ -7,3 +7,7 @@ class FetchEmis extends EmiEvent {
 
   FetchEmis(this.userId, this.token);
 }
+
+class LockDeviceEvent extends EmiEvent {}
+
+class UnlockDeviceEvent extends EmiEvent {}
