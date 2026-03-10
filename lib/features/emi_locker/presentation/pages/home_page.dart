@@ -58,6 +58,13 @@ class _HomePageState extends State<HomePage> {
       fetchEmi();
   }
 
+  @override
+  void dispose() {
+    socketService.close();
+    emiBloc.close();
+    super.dispose();
+  }
+
   Future<void> fetchEmi() async {
 
     final token = await storage.read(key: "token");
@@ -138,3 +145,4 @@ class _HomePageState extends State<HomePage> {
     );
   }
 }
+
