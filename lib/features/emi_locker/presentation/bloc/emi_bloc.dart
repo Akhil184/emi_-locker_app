@@ -24,7 +24,7 @@ class EmiBloc extends Bloc<EmiEvent, EmiState> {
           event.token,
         );
 
-        if (emis.any((e) => e.status == "pending")) {
+        if (emis.any((e) => e.status == "active")) {
 
           await DevicePolicyService.lockDevice();
 
