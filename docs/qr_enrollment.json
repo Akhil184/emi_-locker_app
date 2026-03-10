@@ -1,6 +1,5 @@
 {
   "android.app.extra.PROVISIONING_DEVICE_ADMIN_COMPONENT_NAME": "com.example.emi_locker_app/.DeviceAdminReceiverImpl",
-  "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION": "https://yourserver.com/emi_locker_app.apk",
-  "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_CHECKSUM": "BASE64_CHECKSUM",
+  "android.app.extra.PROVISIONING_DEVICE_ADMIN_PACKAGE_DOWNLOAD_LOCATION": "https://github.com/Akhil184/emi_-locker_app/releases/download/v1.0/app-release.apk",
   "android.app.extra.PROVISIONING_SKIP_ENCRYPTION": true
 }
